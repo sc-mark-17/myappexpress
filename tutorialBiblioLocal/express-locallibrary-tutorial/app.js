@@ -9,6 +9,12 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+var mongoose = require('mongoose');
+var mongoDB = 'mongodb+srv://sebcamacho1703:<maquina>@cluster0-n9or5.azure.mongodb.net/local_library?retryWrites=true';
+mongoose.connect(mongoDB, {useNewUrlParser: true});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
